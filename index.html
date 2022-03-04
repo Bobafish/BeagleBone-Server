@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <head>
+            <title>BeagleBone Research</title>
+        </head>
+        <div id = "title">
+            <h1>Video Streams</h1>
+        </div>
+        <div id = "cam1" class = "cam">
+            <h2>Camera 1</h2>
+            <img id = "imageI">
+        </div>
+        <div id = "cam2" class = "cam">
+            <h2>Camera 2</h2>
+            <img id = "imageII">
+        </div>
+        <div id = "cam3" class = "cam">
+            <h2>Camera 3</h2>
+            <img id = "imageIII">
+        </div>
+        <div id = "cam4" class = "cam">
+            <h2>Camera 4</h2>
+            <img id = "imageIV">
+        </div>
+        <!-- script for socket.io -->
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+        <script>
+            //connects to local host : 3000
+            const socket = io.connect('http://localhost:3000');
+            socket.on('imageI', (imageI) => {
+                const imageElmI = document.getElementById('imageI');
+                imageElmI.src = `data:imageI/jpeg;base64,${imageI}`;
+            });
+            socket.on('imageII', (imageII) => {
+                const imageElmII = document.getElementById('imageII');
+                imageElmII.src = `data:imageII/jpeg;base64,${imageII}`;
+            });
+            socket.on('imageIII', (imageIII) => {
+                const imageElmIII = document.getElementById('imageIII');
+                imageElmIII.src = `data:imageIII/jpeg;base64,${imageIII}`;
+            });
+            socket.on('imageIV', (imageIV) => {
+                const imageElmIV = document.getElementById('imageIV');
+                imageElmIV.src = `data:imageIV/jpeg;base64,${imageIV}`;
+            });
+        </script>
+              
+    </body>
+</html>
